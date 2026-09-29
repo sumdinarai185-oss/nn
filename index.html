@@ -1,0 +1,1399 @@
++```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Our Little World ❤️</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, serif;
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffdce5,
+                    #fff5f7,
+                    #ffe6ee
+                );
+            color: #542632;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+
+        /* ---------- GENERAL ---------- */
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
+
+        .card {
+            width: 92%;
+            max-width: 600px;
+            background: rgba(255,255,255,0.92);
+            padding: 40px 25px;
+            border-radius: 32px;
+            box-shadow:
+                0 15px 45px rgba(100,40,60,0.15);
+            animation: appear 1s ease;
+        }
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 27px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+
+        .hidden {
+            display: none !important;
+        }
+
+
+        /* ---------- BUTTON ---------- */
+
+        button {
+            border: none;
+            background: #d95778;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 17px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+            box-shadow:
+                0 8px 20px rgba(217,87,120,0.25);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* ---------- FIRST SCREEN ---------- */
+
+        .big-heart {
+            font-size: 70px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+
+        }
+
+
+        /* ---------- PASSWORD ---------- */
+
+        input {
+            width: 85%;
+            max-width: 400px;
+            padding: 16px;
+            border-radius: 20px;
+            border: 2px solid #e5a4b5;
+            text-align: center;
+            font-size: 18px;
+            outline: none;
+            margin-top: 15px;
+        }
+
+        input:focus {
+            border-color: #d95778;
+        }
+
+
+        /* ---------- UNLOCK ---------- */
+
+        .lock {
+            font-size: 65px;
+            animation: shake 2s infinite;
+        }
+
+        @keyframes shake {
+
+            0%,90%,100% {
+                transform: rotate(0);
+            }
+
+            93% {
+                transform: rotate(-8deg);
+            }
+
+            96% {
+                transform: rotate(8deg);
+            }
+
+        }
+
+
+        /* ---------- MAIN INTRO ---------- */
+
+        .welcome-title {
+            font-size: 42px;
+        }
+
+        .line {
+            width: 80px;
+            height: 3px;
+            background: #d95778;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+
+        /* ---------- BOXES ---------- */
+
+        .box-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .love-box {
+            background: white;
+            border: 2px solid #f4c5d1;
+            border-radius: 22px;
+            padding: 20px 10px;
+            min-height: 145px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow:
+                0 8px 20px rgba(100,40,60,0.08);
+        }
+
+        .love-box:hover {
+            transform: translateY(-8px);
+            box-shadow:
+                0 15px 30px rgba(100,40,60,0.15);
+        }
+
+        .love-icon {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .love-box b {
+            font-size: 16px;
+        }
+
+        .love-box small {
+            display: block;
+            margin-top: 8px;
+            color: #9c6674;
+        }
+
+
+        /* ---------- MODAL ---------- */
+
+        .modal {
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(35,10,20,0.93);
+
+            display: none;
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 15px;
+
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+
+        .modal-content {
+            width: 96%;
+            max-width: 850px;
+            max-height: 92vh;
+
+            overflow-y: auto;
+
+            background: #fff7f9;
+
+            border-radius: 28px;
+
+            padding: 30px 20px;
+
+            position: relative;
+
+            animation: popup 0.4s ease;
+        }
+
+        @keyframes popup {
+
+            from {
+                transform: scale(0.85);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+        }
+
+
+        .close {
+            position: absolute;
+            right: 18px;
+            top: 8px;
+
+            font-size: 38px;
+
+            color: #d95778;
+
+            cursor: pointer;
+
+            z-index: 10;
+        }
+
+
+        /* ---------- MEMORY GALLERY ---------- */
+
+        .memory-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .memory-gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 18px;
+
+            box-shadow:
+                0 7px 20px rgba(80,30,50,0.15);
+
+            transition: 0.3s;
+        }
+
+        .memory-gallery img:hover {
+            transform: scale(1.03);
+        }
+
+
+        /* ---------- SONG ---------- */
+
+        .song-icon {
+            font-size: 65px;
+            margin: 10px;
+        }
+
+        .song-player {
+            width: 100%;
+            height: 315px;
+
+            border: none;
+
+            border-radius: 20px;
+
+            margin-top: 20px;
+        }
+
+
+        /* ---------- FINAL ---------- */
+
+        .final-heart {
+            font-size: 90px;
+
+            animation:
+                heartbeat 1.4s infinite;
+        }
+
+        .final-text {
+            font-size: 24px;
+            line-height: 1.7;
+        }
+
+
+        /* ---------- FLOATING HEARTS ---------- */
+
+        .floating-heart {
+            position: fixed;
+
+            bottom: -30px;
+
+            font-size: 22px;
+
+            pointer-events: none;
+
+            animation:
+                floatHeart 6s linear forwards;
+
+            z-index: 1;
+        }
+
+        @keyframes floatHeart {
+
+            0% {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 1;
+            }
+
+            100% {
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+
+        }
+
+
+        /* ---------- MOBILE ---------- */
+
+        @media (max-width: 500px) {
+
+            h1 {
+                font-size: 31px;
+            }
+
+            .welcome-title {
+                font-size: 34px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .box-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .love-box {
+                min-height: 130px;
+                padding: 15px 7px;
+            }
+
+            .love-icon {
+                font-size: 35px;
+            }
+
+            .memory-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .memory-gallery img {
+                height: 300px;
+            }
+
+            .song-player {
+                height: 250px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================================================= -->
+<!-- 1. FIRST SCREEN -->
+<!-- ================================================= -->
+
+<div class="page" id="first">
+
+    <div class="card">
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+        <h1>
+            Hey You...
+        </h1>
+
+        <p>
+            I made something especially for you.
+        </p>
+
+        <p>
+            But you have to discover it yourself. 👀
+        </p>
+
+        <button onclick="showPage('first','second')">
+            Click Here ❤️
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- 2. SECOND SCREEN -->
+<!-- ================================================= -->
+
+<div class="page hidden" id="second">
+
+    <div class="card">
+
+        <div style="font-size:65px;">
+            🎁
+        </div>
+
+        <h1>
+            I Got Something For You
+        </h1>
+
+        <div class="line"></div>
+
+        <p>
+            It's a little surprise from me to you.
+        </p>
+
+        <p>
+            But there's one tiny problem... 👀
+        </p>
+
+        <p>
+            You need to unlock it first. 🔐
+        </p>
+
+        <button onclick="showPage('second','lock')">
+            Okay, Let's Unlock It ❤️
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- 3. SECRET LOCK -->
+<!-- ================================================= -->
+
+<div class="page hidden" id="lock">
+
+    <div class="card">
+
+        <div class="lock">
+            🔐
+        </div>
+
+        <h1>
+            Secret Lock
+        </h1>
+
+        <p>
+            Before entering our little world...
+        </p>
+
+        <p>
+            Enter the date our story began. ❤️
+        </p>
+
+        <p>
+            <small>
+                Hint: Our anniversary date
+            </small>
+        </p>
+
+        <input
+            id="dateCode"
+            placeholder="DD/MM/YYYY"
+        >
+
+        <br>
+
+        <button onclick="unlock()">
+            Unlock Our World ❤️
+        </button>
+
+        <p id="wrong"></p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- 4. MAIN WEBSITE -->
+<!-- ================================================= -->
+
+<div class="hidden" id="main">
+
+
+    <!-- MAIN MESSAGE -->
+
+    <div class="page">
+
+        <div class="card">
+
+            <div style="font-size:65px;">
+                💗
+            </div>
+
+            <h1 class="welcome-title">
+                Happy Boyfriend Day ❤️
+            </h1>
+
+            <div class="line"></div>
+
+            <h2>
+                My Love,
+            </h2>
+
+            <p>
+                Happy Boyfriend Day to the most
+                special person in my life. ❤️
+            </p>
+
+            <p>
+                Even though we're far away from
+                each other, you are always close
+                to my heart.
+            </p>
+
+            <p>
+                I wish I could be beside you today,
+                but until that day comes, I hope
+                this little surprise reminds you
+                how much you mean to me.
+            </p>
+
+            <p>
+                Thank you for being such a beautiful
+                part of my life. 🥹❤️
+            </p>
+
+            <p>
+                I love you more than words can explain.
+            </p>
+
+            <h2>
+                Forever yours 💗
+            </h2>
+
+            <button onclick="scrollToBoxes()">
+                Enter Our Little World ✨
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- 5. BOXES -->
+    <!-- ================================================= -->
+
+    <div class="page" id="boxes">
+
+        <div class="card">
+
+            <h1>
+                I Have More For You 🎁
+            </h1>
+
+            <p>
+                Open them one by one.
+            </p>
+
+            <p>
+                Each one has a little piece
+                of my heart. ❤️
+            </p>
+
+
+            <div class="box-container">
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    class="love-box"
+                    onclick="openMessage(1)"
+                >
+
+                    <div class="love-icon">
+                        💌
+                    </div>
+
+                    <b>
+                        A Message
+                    </b>
+
+                    <small>
+                        Something from my heart
+                    </small>
+
+                </div>
+
+
+
+                <!-- MEMORIES -->
+
+                <div
+                    class="love-box"
+                    onclick="openMessage(2)"
+                >
+
+                    <div class="love-icon">
+                        📸
+                    </div>
+
+                    <b>
+                        Our Memories
+                    </b>
+
+                    <small>
+                        Little moments
+                    </small>
+
+                </div>
+
+
+
+                <!-- WHY I LOVE YOU -->
+
+                <div
+                    class="love-box"
+                    onclick="openMessage(3)"
+                >
+
+                    <div class="love-icon">
+                        💗
+                    </div>
+
+                    <b>
+                        Why I Love You
+                    </b>
+
+                    <small>
+                        A few reasons
+                    </small>
+
+                </div>
+
+
+
+                <!-- MISS ME -->
+
+                <div
+                    class="love-box"
+                    onclick="openMessage(4)"
+                >
+
+                    <div class="love-icon">
+                        🥺
+                    </div>
+
+                    <b>
+                        When You Miss Me
+                    </b>
+
+                    <small>
+                        Open when you miss me
+                    </small>
+
+                </div>
+
+
+
+                <!-- SONG -->
+
+                <div
+                    class="love-box"
+                    onclick="openMessage(5)"
+                >
+
+                    <div class="love-icon">
+                        🎵
+                    </div>
+
+                    <b>
+                        Our Song
+                    </b>
+
+                    <small>
+                        The song you dedicated to me
+                    </small>
+
+                </div>
+
+
+
+                <!-- FUTURE -->
+
+                <div
+                    class="love-box"
+                    onclick="openMessage(6)"
+                >
+
+                    <div class="love-icon">
+                        💍
+                    </div>
+
+                    <b>
+                        Our Future
+                    </b>
+
+                    <small>
+                        Someday...
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- 6. FINAL PAGE -->
+    <!-- ================================================= -->
+
+    <div class="page">
+
+        <div class="card">
+
+            <div class="final-heart">
+                ❤️
+            </div>
+
+            <h1>
+                One Last Thing...
+            </h1>
+
+            <p class="final-text">
+                You found everything.
+            </p>
+
+            <p class="final-text">
+                But there's one thing
+                I couldn't put inside these boxes...
+            </p>
+
+            <h2>
+                How much I love you. 🥹❤️
+            </h2>
+
+            <div class="line"></div>
+
+            <h1>
+                Happy Boyfriend Day,
+                My Love. ❤️
+            </h1>
+
+            <p>
+                You + Me
+            </p>
+
+            <h2>
+                Forever 💗
+            </h2>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- FULL SCREEN POPUP -->
+<!-- ================================================= -->
+
+<div
+    class="modal"
+    id="modal"
+>
+
+    <div class="modal-content">
+
+        <span
+            class="close"
+            onclick="closeModal()"
+        >
+            ×
+        </span>
+
+        <div id="modalContent"></div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* ================================================= */
+/* PAGE CHANGING */
+/* ================================================= */
+
+function showPage(current, next) {
+
+    document
+        .getElementById(current)
+        .classList.add("hidden");
+
+    document
+        .getElementById(next)
+        .classList.remove("hidden");
+
+    window.scrollTo(0,0);
+
+}
+
+
+
+/* ================================================= */
+/* UNLOCK */
+/* ================================================= */
+
+function unlock() {
+
+    let code =
+        document.getElementById("dateCode").value;
+
+    code =
+        code.replace(/[\s\/\-]/g, "");
+
+
+    if (
+        code === "10052025" ||
+        code === "20250510"
+    ) {
+
+        document
+            .getElementById("lock")
+            .classList.add("hidden");
+
+
+        document
+            .getElementById("main")
+            .classList.remove("hidden");
+
+
+        window.scrollTo(0,0);
+
+
+    } else {
+
+        document
+            .getElementById("wrong")
+            .innerHTML =
+            "Hmm... that's not our special date 🥺❤️";
+
+    }
+
+}
+
+
+
+/* ================================================= */
+/* SCROLL TO BOXES */
+/* ================================================= */
+
+function scrollToBoxes() {
+
+    document
+        .getElementById("boxes")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+
+/* ================================================= */
+/* OPEN POPUP */
+/* ================================================= */
+
+function openMessage(number) {
+
+    let modal =
+        document.getElementById("modal");
+
+    let content =
+        document.getElementById("modalContent");
+
+
+    modal.style.display = "flex";
+
+
+
+    /* --------------------------------------------- */
+    /* MESSAGE */
+    /* --------------------------------------------- */
+
+    if (number === 1) {
+
+        content.innerHTML = `
+
+            <h1>
+                💌 A Message For You
+            </h1>
+
+            <div class="line"></div>
+
+            <p>
+                Hey my love,
+            </p>
+
+            <p>
+                Just a little message to remind you
+                how much you mean to me.
+            </p>
+
+            <p>
+                You're my peace, my happiness,
+                and my favourite person.
+            </p>
+
+            <p>
+                No matter what happens,
+                I'll always choose you. ❤️
+            </p>
+
+            <h2>
+                I love you, always. ❤️
+            </h2>
+
+        `;
+
+    }
+
+
+
+    /* --------------------------------------------- */
+    /* MEMORIES */
+    /* --------------------------------------------- */
+
+    if (number === 2) {
+
+        content.innerHTML = `
+
+            <h1>
+                📸 Our Memories
+            </h1>
+
+            <p>
+                All the little moments
+                that mean the world to me. ❤️
+            </p>
+
+            <div class="memory-gallery">
+
+                <img
+                    src="c:\Users\User\Pictures\Camera Roll\png.jpg"
+                    alt="Our memory"
+                >
+
+                <img
+                    src="c:\Users\User\Pictures\825260903_28325578303758815_7689318115806311067_n.jpg"
+                    alt="Our memory"
+                >
+
+                <img
+                    src="c:\Users\User\Pictures\825309662_4096697580634297_4789310570488736548_n.jpg"
+                    alt="Our memory"
+                >
+
+                <img
+                    src="c:\Users\User\Pictures\829543461_1076688261794146_8114768976966035644_n.jpg"
+                    alt="Our memory"
+                >
+
+            </div>
+
+            <p>
+                And I hope we make
+                thousands more. 🥹❤️
+            </p>
+
+        `;
+
+    }
+
+
+
+    /* --------------------------------------------- */
+    /* WHY I LOVE YOU */
+    /* --------------------------------------------- */
+
+    if (number === 3) {
+
+        content.innerHTML = `
+
+            <h1>
+                💗 Why I Love You
+            </h1>
+
+            <div class="line"></div>
+
+            <p>
+                ❤️ You make me smile,
+                even on my worst days.
+            </p>
+
+            <p>
+                ❤️ You care about me
+                in your own special way.
+            </p>
+
+            <p>
+                ❤️ You listen to me
+                and understand me.
+            </p>
+
+            <p>
+                ❤️ You make ordinary
+                moments feel special.
+            </p>
+
+            <p>
+                ❤️ And most importantly,
+                you're simply you.
+            </p>
+
+            <h2>
+                That's enough reason for me. 🥹
+            </h2>
+
+        `;
+
+    }
+
+
+
+    /* --------------------------------------------- */
+    /* WHEN YOU MISS ME */
+    /* --------------------------------------------- */
+
+    if (number === 4) {
+
+        content.innerHTML = `
+
+            <h1>
+                🥺 When You Miss Me
+            </h1>
+
+            <div class="line"></div>
+
+            <p>
+                If you're reading this because
+                you miss me...
+            </p>
+
+            <p>
+                Take a deep breath.
+            </p>
+
+            <p>
+                Look at the sky.
+            </p>
+
+            <p>
+                And remember that somewhere
+                far away, I'm thinking about you too. ❤️
+            </p>
+
+            <p>
+                Distance is temporary.
+            </p>
+
+            <h2>
+                Our love isn't. ❤️
+            </h2>
+
+        `;
+
+    }
+
+
+
+    /* --------------------------------------------- */
+    /* OUR SONG */
+    /* --------------------------------------------- */
+
+    if (number === 5) {
+
+        content.innerHTML = `
+
+            <div class="song-icon">
+                🎵
+            </div>
+
+            <h1>
+                Our Song ❤️
+            </h1>
+
+            <div class="line"></div>
+
+            <p>
+                The song you dedicated to me...
+            </p>
+
+            <p>
+                The first song you ever sang
+                for me. 🥹❤️
+            </p>
+
+            <h2>
+                Perfect — Ed Sheeran
+            </h2>
+
+            <iframe
+                class="song-player"
+                src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1"
+                title="Perfect - Ed Sheeran"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+
+            <p>
+                Every time I hear this song,
+                I'll remember that moment. ❤️
+            </p>
+
+        `;
+
+    }
+
+
+
+    /* --------------------------------------------- */
+    /* OUR FUTURE */
+    /* --------------------------------------------- */
+
+    if (number === 6) {
+
+        content.innerHTML = `
+
+            <h1>
+                💍 Our Future
+            </h1>
+
+            <div class="line"></div>
+
+            <p>
+                Maybe right now we're far away...
+            </p>
+
+            <p>
+                But I believe there will be
+                a day when distance isn't
+                part of our story anymore.
+            </p>
+
+            <p>
+                A day when we can wake up
+                beside each other.
+            </p>
+
+            <p>
+                Travel together.
+            </p>
+
+            <p>
+                Make our own little home.
+            </p>
+
+            <p>
+                Grow together.
+            </p>
+
+            <h2>
+                Someday... ❤️
+            </h2>
+
+            <h1>
+                You + Me = Forever 💗
+            </h1>
+
+        `;
+
+    }
+
+}
+
+
+
+/* ================================================= */
+/* CLOSE POPUP */
+/* ================================================= */
+
+function closeModal() {
+
+    document
+        .getElementById("modal")
+        .style.display = "none";
+
+
+    document
+        .getElementById("modalContent")
+        .innerHTML = "";
+
+}
+
+
+
+/* ================================================= */
+/* CLOSE POPUP WHEN CLICKING OUTSIDE */
+/* ================================================= */
+
+document
+    .getElementById("modal")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+
+/* ================================================= */
+/* FLOATING HEARTS */
+/* ================================================= */
+
+setInterval(
+    function() {
+
+        let heart =
+            document.createElement("div");
+
+
+        heart.className =
+            "floating-heart";
+
+
+        heart.innerHTML =
+            Math.random() > 0.5
+            ? "❤️"
+            : "💕";
+
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+
+        heart.style.animationDuration =
+            (4 + Math.random() * 4) + "s";
+
+
+        document.body.appendChild(heart);
+
+
+        setTimeout(
+            function() {
+
+                heart.remove();
+
+            },
+            8000
+        );
+
+    },
+    700
+);
+
+
+</script>
+
+</body>
+
+</html>
+``
